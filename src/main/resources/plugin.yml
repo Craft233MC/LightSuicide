@@ -1,0 +1,16 @@
+name: LightSuicide
+version: '1.0-SNAPSHOT'
+main: top.craft233.lightSuicide.LightSuicide
+api-version: '1.20'
+folia-supported: true
+
+
+commands:
+  suicide:
+    description: kill yourself
+    usage: /<command>
+    aliases: [sui, zisha, "自杀"]
+  lightsuicide:
+    description: lightsuicide manage
+    usage: /<command> subcommands
+    aliases: [lsuicide, ls]
