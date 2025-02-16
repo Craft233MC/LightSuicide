@@ -1,5 +1,6 @@
 package ink.neokoni.lightSuicide;
 
+import ink.neokoni.lightSuicide.commands.suicide;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

@@ -1,5 +1,6 @@
 package ink.neokoni.lightSuicide;
 
+import ink.neokoni.lightSuicide.commands.suicide;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -30,7 +31,7 @@ public final class LightSuicide extends JavaPlugin {
     }
 
     private void regCommand() {
-        new suicide().register();
+        new suicide().register(this);
         new deathHandler().register(this);
     }
 
