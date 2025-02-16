@@ -1,4 +1,4 @@
-package top.craft233.lightSuicide;
+package ink.neokoni.lightSuicide;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;

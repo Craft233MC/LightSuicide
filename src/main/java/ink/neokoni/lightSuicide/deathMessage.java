@@ -1,4 +1,4 @@
-package top.craft233.lightSuicide;
+package ink.neokoni.lightSuicide;
 
 import net.kyori.adventure.text.Component;
 import org.bukkit.configuration.Configuration;

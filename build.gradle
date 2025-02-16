@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group = 'top.craft233.lightSuicide'
+group = 'ink.neokoni.lightSuicide'
 version = '1.0-SNAPSHOT'
 
 repositories {

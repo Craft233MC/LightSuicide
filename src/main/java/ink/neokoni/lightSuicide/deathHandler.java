@@ -1,4 +1,4 @@
-package top.craft233.lightSuicide;
+package ink.neokoni.lightSuicide;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
