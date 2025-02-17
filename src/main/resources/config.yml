@@ -1,4 +1,7 @@
 custom-suicide-message: true
 
+# messages color formater(MINIMESSAGE or LEGACY(&))
+formatter: MINIMESSAGE
+
 messages:
   - "awsl"
