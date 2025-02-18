@@ -32,9 +32,9 @@ public class suicide implements CommandExecutor {
         player.setHealth(0.0);
 
         if(instance.getConfig().getBoolean("custom-suicide-message")){
-            Bukkit.broadcast(deathMessage.getRandomDeathMessage());
+            Bukkit.broadcast(deathMessage.getRandomDeathMessage(player));
         } else {
-            player.sendMessage(deathMessage.getFirstDeathMessage());
+            player.sendMessage(deathMessage.getFirstDeathMessage(player));
         }
         return true;
     }
