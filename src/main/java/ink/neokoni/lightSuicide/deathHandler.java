@@ -14,10 +14,12 @@ public class deathHandler implements Listener {
 
     @EventHandler
     public void onDeath(PlayerDeathEvent event){
-        Player Listenedplayer = event.getPlayer();
-        Player lastSuicidePlayer = new suicide().getLastSuicidePlayer();
-        if(lastSuicidePlayer != null && lastSuicidePlayer.equals(Listenedplayer)){
-            event.deathMessage(null);
+        if (LightSuicide.getInstance().getConfig().getBoolean("use-custom-messages")) {
+            Player Listenedplayer = event.getPlayer();
+            Player lastSuicidePlayer = new suicide().getLastSuicidePlayer();
+            if(lastSuicidePlayer != null && lastSuicidePlayer.equals(Listenedplayer)){
+                event.deathMessage(null);
+            }
         }
     }
 }

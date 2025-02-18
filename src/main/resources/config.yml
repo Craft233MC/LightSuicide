@@ -1,7 +1,23 @@
-custom-suicide-message: true
+# use customize messages, if not will not modify broadcast die messages
+use-custom-messages: true
+
+# should broadcast custom suicide message
+broadcast-suicide-message: true
+
+# should send messages to who suicided
+send-msg-who-suicided: false
+
+# should use random suicide message, if not will always use first message
+random-suicide-broadcast-message: true
+
+# should send random message to who suicided, if not will always use first message
+random-send-player-message: true
 
 # messages color formater(MINIMESSAGE or LEGACY(&))
 formatter: MINIMESSAGE
 
-messages:
-  - "awsl"
+broadcast-messages:
+  - "%player% disappeared suddenly"
+
+send-player-messages:
+  - "you suicided at %location%"

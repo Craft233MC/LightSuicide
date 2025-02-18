@@ -9,16 +9,28 @@ import java.util.Random;
 
 public class deathMessage {
     Configuration config = LightSuicide.getInstance().getConfig();
-    private final String[] deathMessages = config.getStringList("messages").toArray(new String[0]);
+    private final String[] broadcastDeathMessages = config.getStringList("broadcast-messages").toArray(new String[0]);
+    private final String[] sendPlayerDeathMessages = config.getStringList("send-player-messages").toArray(new String[0]);
 
     public Component getRandomDeathMessage(Player player) {
-        int randomNum = new Random().nextInt(deathMessages.length);
-        String replacedText = internalPlaceholderReplace(deathMessages[randomNum], player);
+        int randomNum = new Random().nextInt(broadcastDeathMessages.length);
+        String replacedText = internalPlaceholderReplace(broadcastDeathMessages[randomNum], player);
         return colorHandlerSelector.translateColor(replacedText);
     }
 
     public Component getFirstDeathMessage(Player player) {
-        String replacedText = internalPlaceholderReplace(deathMessages[0], player);
+        String replacedText = internalPlaceholderReplace(broadcastDeathMessages[0], player);
+        return colorHandlerSelector.translateColor(replacedText);
+    }
+
+    public Component getRandomSendPlayerDeathMessage(Player player) {
+        int randomNum = new Random().nextInt(sendPlayerDeathMessages.length);
+        String replacedText = internalPlaceholderReplace(sendPlayerDeathMessages[randomNum], player);
+        return colorHandlerSelector.translateColor(replacedText);
+    }
+
+    public Component getFirstSendPlayerDeathMessage(Player player) {
+        String replacedText = internalPlaceholderReplace(sendPlayerDeathMessages[0], player);
         return colorHandlerSelector.translateColor(replacedText);
     }
 
