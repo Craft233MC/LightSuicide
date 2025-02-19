@@ -13,7 +13,7 @@ random-suicide-broadcast-message: true
 # should send random message to who suicided, if not will always use first message
 random-send-player-message: true
 
-# messages color formater(MINIMESSAGE or LEGACY(&))
+# messages color formatter(MINIMESSAGE or LEGACY(&))
 formatter: MINIMESSAGE
 
 broadcast-messages:
