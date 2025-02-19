@@ -1,5 +1,5 @@
 name: LightSuicide
-version: '1.0-SNAPSHOT'
+version: '0.1'
 main: ink.neokoni.lightSuicide.LightSuicide
 api-version: '1.20'
 folia-supported: true
