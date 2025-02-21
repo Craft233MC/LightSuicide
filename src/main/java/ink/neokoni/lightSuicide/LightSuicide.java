@@ -43,4 +43,9 @@ public final class LightSuicide extends JavaPlugin {
     public static LightSuicide getInstance() {
         return instance;
     }
+
+    public void reload() {
+        initConfig();
+        reloadConfig();
+    }
 }
