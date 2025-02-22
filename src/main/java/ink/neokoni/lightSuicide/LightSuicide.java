@@ -2,6 +2,9 @@ package ink.neokoni.lightSuicide;
 
 import ink.neokoni.lightSuicide.commands.lightsuicide;
 import ink.neokoni.lightSuicide.commands.suicide;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -47,5 +50,9 @@ public final class LightSuicide extends JavaPlugin {
     public void reload() {
         initConfig();
         reloadConfig();
+    }
+
+    public static void noPermsMsg(CommandSender c){
+        c.sendMessage(Component.text("你没有执行此命令的权限！").color(TextColor.fromCSSHexString("#C8F1EF")));
     }
 }

@@ -9,8 +9,23 @@ commands:
   suicide:
     description: kill yourself
     usage: /<command>
+    permission: lightsuicide.suicide
     aliases: [sui, zisha, "自杀"]
   lightsuicide:
     description: lightsuicide manage
     usage: /<command> subcommands
+    permission: lightsuicide.help
     aliases: [lsuicide, ls]
+
+permissions:
+  lightsuicide.suicide: {default: true}
+  lightsuicide.about: {default: op}
+  lightsuicide.help: {default: op}
+  lightsuicide.reload: {default: op}
+  lightsuicide.*:
+    default: op
+    children:
+      lightsuicide.suicide: true
+      lightsuicide.about: true
+      lightsuicide.help: true
+      lightsuicide.reload: true

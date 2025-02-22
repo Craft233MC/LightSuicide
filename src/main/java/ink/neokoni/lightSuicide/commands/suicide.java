@@ -27,6 +27,12 @@ public class suicide implements CommandExecutor {
 
         Player player = (Player) commandSender;
         deathMessage deathMessage = new deathMessage();
+
+        if (!commandSender.hasPermission("lightsuicide.suicide")){
+            LightSuicide.noPermsMsg(player);
+            return true;
+        }
+
         lastSuicidePlayer = player;
 
         player.setHealth(0.0);
