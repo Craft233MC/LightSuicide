@@ -16,6 +16,8 @@ random-send-player-message: true
 # messages color formatter(MINIMESSAGE or LEGACY(&))
 formatter: MINIMESSAGE
 
+location-format: "[%x%, %y%, %z%, %world%]"
+
 broadcast-messages:
   - "%player% disappeared suddenly"
 

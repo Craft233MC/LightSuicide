@@ -35,19 +35,18 @@ public class deathMessage {
     }
 
     private String internalPlaceholderReplace(String input, Player player){
-        // placeholder %player%
-        String named = input.replaceAll("%player%", player.getName());
+        // format location text from config
+        String locText = config.getString("location-format");
+        String locFormated = locText.replace("%x%", String.valueOf(player.getLocation().getBlockX()))
+                        .replace("%y%", String.valueOf(player.getLocation().getBlockY()))
+                        .replace("%z%", String.valueOf(player.getLocation().getBlockZ()))
+                        .replace("%world%", player.getLocation().getWorld().getName());
 
-        // placeholder %location%
-        String location = "[" +
-                player.getLocation().getBlockX() + ", "
-                + player.getLocation().getBlockY() + ", "
-                + player.getLocation().getBlockZ() + ", "
-                + player.getLocation().getWorld().getName()
-                + "]";
-        String endText = named.replaceAll("%location%", location);
+        // replace placeholders
+        String result = input.replace("%player%", player.getName()) // player name
+                .replace("%location", locFormated); // location
 
         // return
-        return endText;
+        return result;
     }
 }
