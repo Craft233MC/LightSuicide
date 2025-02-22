@@ -44,7 +44,7 @@ public class deathMessage {
 
         // replace placeholders
         String result = input.replace("%player%", player.getName()) // player name
-                .replace("%location", locFormated); // location
+                .replace("%location%", locFormated); // location
 
         // return
         return result;
