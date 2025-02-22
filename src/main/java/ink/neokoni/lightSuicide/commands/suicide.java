@@ -21,7 +21,7 @@ public class suicide implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if(!(commandSender instanceof Player)){
-            commandSender.sendMessage("Not a player!");
+            commandSender.sendMessage(LightSuicide.getMsgFromLang("not-player"));
             return true;
         }
 

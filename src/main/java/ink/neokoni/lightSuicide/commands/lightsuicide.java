@@ -42,7 +42,6 @@ public class lightsuicide implements CommandExecutor {
         }
 
         if (strings[0].equals("reload")){
-            Bukkit.getLogger().info(String.valueOf(!commandSender.hasPermission("lightsuicide.reload")));
             if (!commandSender.hasPermission("lightsuicide.reload")){
                 LightSuicide.noPermsMsg(commandSender);
                 return true;
@@ -76,25 +75,23 @@ public class lightsuicide implements CommandExecutor {
 
         LightSuicide.getInstance().reload();
 
-        p.sendMessage(Component.text("成功重载配置文件！").color(TextColor.fromCSSHexString("#C8F1EF")));
+        p.sendMessage(LightSuicide.getMsgFromLang("reload-success"));
     }
 
     private void help(CommandSender c){
-        c.sendMessage(Component.text("正在运行LightSuicide v0.1!").color(TextColor.fromCSSHexString("#C8F1EF")));
-        c.sendMessage(Component.text("/suicide 执行自杀").color(TextColor.fromCSSHexString("#C8F1EF")));
+        c.sendMessage(LightSuicide.getMsgFromLangV("running"));
+        c.sendMessage(LightSuicide.getMsgFromLang("suicide-cmd-help"));
         c.sendMessage(Component.text(""));
         c.sendMessage(Component.text("--------------------").color(TextColor.fromCSSHexString("#C8F1EF")));
-        c.sendMessage(Component.text("/lightsuicide about 显示关于信息").color(TextColor.fromCSSHexString("#C8F1EF")));
-        c.sendMessage(Component.text("/lightsuicide reload 重载配置文件").color(TextColor.fromCSSHexString("#C8F1EF")));
-        c.sendMessage(Component.text("/lightsuicide help 显示指令帮助").color(TextColor.fromCSSHexString("#C8F1EF")));
-        c.sendMessage(Component.text(""));
-        c.sendMessage(Component.text("/suicide 执行自杀").color(TextColor.fromCSSHexString("#C8F1EF")));
+        c.sendMessage(LightSuicide.getMsgFromLang("about-cmd-help"));
+        c.sendMessage(LightSuicide.getMsgFromLang("reload-cmd-help"));
+        c.sendMessage(LightSuicide.getMsgFromLang("help-cmd-help"));
     }
 
     private void about(CommandSender c){
-        c.sendMessage(Component.text("正在运行LightSuicide v0.1!").color(TextColor.fromCSSHexString("#C8F1EF")));
+        c.sendMessage(LightSuicide.getMsgFromLangV("running"));
         c.sendMessage(Component.text(""));
-        c.sendMessage(Component.text("一个简单的用于执行Suicide的插件，尝试支持高度自定义的配置。").color(TextColor.fromCSSHexString("#C8F1EF")));
+        c.sendMessage(LightSuicide.getMsgFromLang("description"));
         c.sendMessage(Component.text(""));
         c.sendMessage(
                 Component.text("相关链接:  ").color(TextColor.fromCSSHexString("#C8F1EF"))

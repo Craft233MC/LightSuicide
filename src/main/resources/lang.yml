@@ -1,0 +1,11 @@
+no-permission: "&#C8F1EF你没有执行此命令的权限！"
+not-player: "&#C8F1EF只有玩家才能执行此命令！"
+reload-success: "&#C8F1EF成功重载配置文件！"
+
+suicide-cmd-help: "&#C8F1EF/suicide 执行自杀"
+about-cmd-help: "&#C8F1EF/lightsuicide about 显示关于信息"
+help-cmd-help: "&#C8F1EF/lightsuicide help 显示指令帮助"
+reload-cmd-help: "&#C8F1EF/lightsuicide reload 重载配置文件"
+
+description: "&#C8F1EF一个简单的用于执行Suicide的插件，尝试支持高度自定义的配置。"
+running: "&#C8F1EF正在运行LightSuicide v%version%!"
