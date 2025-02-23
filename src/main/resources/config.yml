@@ -1,25 +1,37 @@
+# 使用自定义的消息，如果为false则不会修改死亡消息
 # use customize messages, if not will not modify broadcast die messages
 use-custom-messages: true
 
+# 是否应该广播自定义的死亡消息
 # should broadcast custom suicide message
 broadcast-suicide-message: true
 
+# 是否向执行suicide的玩家发送单独的死亡消息
 # should send messages to who suicided
 send-msg-who-suicided: false
 
+# 是否使用随机死亡消息，如果为false则始终使用第一个消息
 # should use random suicide message, if not will always use first message
 random-suicide-broadcast-message: true
 
+# 是否向执行suicide的玩家使用随机死亡消息，如果为false则始终使用第一个消息
 # should send random message to who suicided, if not will always use first message
 random-send-player-message: true
 
+# 消息颜色格式化器(MINIMESSAGE或LEGACY(&符号))
 # messages color formatter(MINIMESSAGE or LEGACY(&))
 formatter: MINIMESSAGE
 
+# 位置占位符格式设置
+# location placeholder format
 location-format: "[%x%, %y%, %z%, %world%]"
 
+# 自定义广播的死亡消息
+# Customize the broadcast suicide message
 broadcast-messages:
   - "%player% disappeared suddenly"
 
+# 自定义单独发送的死亡消息
+# Customize the death message that is sent separately
 send-player-messages:
   - "you suicided at %location%"
