@@ -14,6 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.IOException;
 import java.util.List;
 
 public class lightsuicide implements CommandExecutor {
@@ -46,7 +47,11 @@ public class lightsuicide implements CommandExecutor {
                 LightSuicide.noPermsMsg(commandSender);
                 return true;
             }
-            reload(commandSender);
+            try {
+                reload(commandSender);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             return true;
         }
 
@@ -70,7 +75,7 @@ public class lightsuicide implements CommandExecutor {
         return true;
     }
 
-    private void reload(CommandSender commandSender) {
+    private void reload(CommandSender commandSender) throws IOException {
         Player p = (Player) commandSender;
 
         LightSuicide.getInstance().reload();
@@ -94,7 +99,7 @@ public class lightsuicide implements CommandExecutor {
         c.sendMessage(LightSuicide.getMsgFromLang("description"));
         c.sendMessage(Component.text(""));
         c.sendMessage(
-                Component.text("相关链接:  ").color(TextColor.fromCSSHexString("#C8F1EF"))
+                LightSuicide.getMsgFromLang("links")
                         .append(Component.text("[GitHub]").clickEvent(ClickEvent.openUrl("https://github.com/Craft233MC/LightSuicide"))
                         .color(TextColor.fromCSSHexString("#C8F1EF")))
         );

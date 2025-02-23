@@ -4,25 +4,28 @@ import ink.neokoni.lightSuicide.commands.lightsuicide;
 import ink.neokoni.lightSuicide.commands.suicide;
 import ink.neokoni.lightSuicide.color.legacy;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.io.IOException;
 
 public final class LightSuicide extends JavaPlugin {
 
     private static LightSuicide instance;
-    private static FileConfiguration lang;
+    private static YamlConfiguration lang;
     public static String version = "0.1";
 
     @Override
     public void onEnable() {
         instance = this;
         // Plugin startup logic
-        initConfig();
+        try {
+            initConfig();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         regCommand();
     }
 
@@ -31,22 +34,17 @@ public final class LightSuicide extends JavaPlugin {
         // Plugin shutdown logic
     }
 
-    private void initConfig() {
+    private void initConfig() throws IOException {
         saveDefaultConfig();
         if (!new File(getDataFolder(), "lang.yml").exists()){
             saveResource("lang.yml", false);
         }
 
-        FileConfiguration config = getConfig();
+        YamlConfiguration config = (YamlConfiguration) getConfig();
         lang = YamlConfiguration.loadConfiguration(new File(getDataFolder(), "lang.yml"));
 
-        // 基础配置初始化
-        if (config.get("custom-suicide-message") == null || !config.isSet("custom-suicide-message")){
-            config.set("custom-suicide-message", true);
-        }
-        if (config.get("formatter") == null || !config.isSet("formatter")){
-            config.set("formatter", "MINIMESSAGE");
-        }
+        // check config and fix to default
+        new configUpdater().update(config, lang);
     }
 
     private void regCommand() {
@@ -59,7 +57,7 @@ public final class LightSuicide extends JavaPlugin {
         return instance;
     }
 
-    public void reload() {
+    public void reload() throws IOException {
         initConfig();
         reloadConfig();
     }
