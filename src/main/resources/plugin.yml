@@ -1,7 +1,7 @@
 name: LightSuicide
 version: '0.1'
 main: ink.neokoni.lightSuicide.LightSuicide
-api-version: '1.20'
+api-version: '1.19'
 folia-supported: true
 authors: [Neokoni]
 website: https://github.com/Craft233MC/LightSuicide
