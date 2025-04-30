@@ -76,11 +76,9 @@ public class lightsuicide implements CommandExecutor {
     }
 
     private void reload(CommandSender commandSender) throws IOException {
-        Player p = (Player) commandSender;
-
         LightSuicide.getInstance().reload();
 
-        p.sendMessage(LightSuicide.getMsgFromLang("reload-success"));
+        commandSender.sendMessage(LightSuicide.getMsgFromLang("reload-success"));
     }
 
     private void help(CommandSender c){

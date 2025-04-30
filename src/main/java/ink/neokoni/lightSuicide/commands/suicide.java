@@ -53,9 +53,9 @@ public class suicide implements CommandExecutor {
         // send player msg
         if (LightSuicide.getInstance().getConfig().getBoolean("send-msg-who-suicided")){
             if(instance.getConfig().getBoolean("random-send-player-message")){
-                Bukkit.broadcast(deathMessage.getMsg(player, sendPlayerDeathMsg, false));
+                player.sendMessage(deathMessage.getMsg(player, sendPlayerDeathMsg, false));
             } else {
-                Bukkit.broadcast(deathMessage.getMsg(player, sendPlayerDeathMsg, false));
+                player.sendMessage(deathMessage.getMsg(player, sendPlayerDeathMsg, false));
             }
         }
 
