@@ -6,11 +6,15 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.Configuration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
 public class suicide implements CommandExecutor {
+    Configuration config = LightSuicide.getInstance().getConfig();
+    private final String[] broadcastDeathMsg = config.getStringList("broadcast-messages").toArray(new String[0]);
+    private final String[] sendPlayerDeathMsg = config.getStringList("send-player-messages").toArray(new String[0]);
     private static Player lastSuicidePlayer;
     private static JavaPlugin instance;
 
@@ -40,18 +44,18 @@ public class suicide implements CommandExecutor {
         // broadcast msg
         if (LightSuicide.getInstance().getConfig().getBoolean("use-custom-messages")){
             if(instance.getConfig().getBoolean("random-suicide-broadcast-message")){
-                Bukkit.broadcast(deathMessage.getRandomDeathMessage(player));
+                Bukkit.broadcast(deathMessage.getMsg(player, broadcastDeathMsg, true));
             } else {
-                Bukkit.broadcast(deathMessage.getFirstDeathMessage(player));
+                Bukkit.broadcast(deathMessage.getMsg(player, broadcastDeathMsg, false));
             }
         }
 
         // send player msg
         if (LightSuicide.getInstance().getConfig().getBoolean("send-msg-who-suicided")){
             if(instance.getConfig().getBoolean("random-send-player-message")){
-                player.sendMessage(deathMessage.getRandomSendPlayerDeathMessage(player));
+                Bukkit.broadcast(deathMessage.getMsg(player, sendPlayerDeathMsg, false));
             } else {
-                player.sendMessage(deathMessage.getFirstSendPlayerDeathMessage(player));
+                Bukkit.broadcast(deathMessage.getMsg(player, sendPlayerDeathMsg, false));
             }
         }
 

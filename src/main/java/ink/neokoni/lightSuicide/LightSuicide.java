@@ -2,7 +2,6 @@ package ink.neokoni.lightSuicide;
 
 import ink.neokoni.lightSuicide.commands.lightsuicide;
 import ink.neokoni.lightSuicide.commands.suicide;
-import ink.neokoni.lightSuicide.color.legacy;
 import net.kyori.adventure.text.Component;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -67,10 +66,10 @@ public final class LightSuicide extends JavaPlugin {
     }
 
     public static Component getMsgFromLang(String path){
-        return legacy.translateColor(lang.getString(path));
+        return coloredText.legacy(lang.getString(path));
     }
     public static Component getMsgFromLangV(String path){
         String text = lang.getString(path).replace("%version%", version);
-        return legacy.translateColor(text);
+        return coloredText.legacy(text);
     }
 }
