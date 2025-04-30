@@ -14,7 +14,7 @@ public final class LightSuicide extends JavaPlugin {
 
     private static LightSuicide instance;
     private static YamlConfiguration lang;
-    public static String version = "0.1";
+    public static String version = "0.2";
 
     @Override
     public void onEnable() {
