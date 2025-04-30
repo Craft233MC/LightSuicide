@@ -19,6 +19,7 @@ public class deathHandler implements Listener {
             Player lastSuicidePlayer = new suicide().getLastSuicidePlayer();
             if(lastSuicidePlayer != null && lastSuicidePlayer.equals(Listenedplayer)){
                 event.deathMessage(null);
+                new suicide().clearLastSuicidePlayer();
             }
         }
     }

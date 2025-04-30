@@ -61,4 +61,8 @@ public class suicide implements CommandExecutor {
     public Player getLastSuicidePlayer() {
         return lastSuicidePlayer;
     }
+
+    public void clearLastSuicidePlayer() {
+        lastSuicidePlayer = null;
+    }
 }
