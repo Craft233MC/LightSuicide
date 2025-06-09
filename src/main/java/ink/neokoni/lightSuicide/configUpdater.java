@@ -1,5 +1,6 @@
 package ink.neokoni.lightSuicide;
 
+import ink.neokoni.lightSuicide.utils.configs;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -34,7 +35,7 @@ public class configUpdater {
         setConfig("location-format");
         setConfigComments("broadcast-messages");
         setConfigComments("send-player-messages");
-        instance.saveConfig();
+        new configs().saveConfig("config", config);
 
         // langConfig
         setLang("no-permission");
@@ -48,8 +49,8 @@ public class configUpdater {
         setLang("running");
         setLang("links");
         try {
-            inputlang.save(new File(LightSuicide.getInstance().getDataFolder(), "lang.yml"));
-        } catch (IOException e) {
+            new configs().saveConfig("lang", lang);
+        } catch (Exception e) {
             Bukkit.getLogger().warning("Failed to save lang.yml");
         };
         tmplang.delete();

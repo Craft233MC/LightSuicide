@@ -1,5 +1,6 @@
 package ink.neokoni.lightSuicide;
 
+import ink.neokoni.lightSuicide.utils.configs;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
@@ -8,7 +9,7 @@ import org.bukkit.Bukkit;
 public class coloredText {
 
     public static Component fromConfig(String text) {
-        String formatter = LightSuicide.getInstance().getConfig().getString("formatter");
+        String formatter = configs.getConfig("config").getString("formatter");
         if (formatter.equals("MINIMESSAGE")){
             return miniMessage(text);
         };

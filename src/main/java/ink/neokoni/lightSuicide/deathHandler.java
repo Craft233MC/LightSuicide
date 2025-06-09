@@ -1,6 +1,7 @@
 package ink.neokoni.lightSuicide;
 
 import ink.neokoni.lightSuicide.commands.suicide;
+import ink.neokoni.lightSuicide.utils.configs;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,7 +15,7 @@ public class deathHandler implements Listener {
 
     @EventHandler
     public void onDeath(PlayerDeathEvent event){
-        if (LightSuicide.getInstance().getConfig().getBoolean("use-custom-messages")) {
+        if (configs.getConfig("config").getBoolean("use-custom-messages")) {
             Player Listenedplayer = event.getPlayer();
             Player lastSuicidePlayer = new suicide().getLastSuicidePlayer();
             if(lastSuicidePlayer != null && lastSuicidePlayer.equals(Listenedplayer)){

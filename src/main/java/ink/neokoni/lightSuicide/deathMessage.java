@@ -1,14 +1,13 @@
 package ink.neokoni.lightSuicide;
 
+import ink.neokoni.lightSuicide.utils.configs;
 import net.kyori.adventure.text.Component;
-import org.bukkit.configuration.Configuration;
 import org.bukkit.entity.Player;
 
 import java.util.Random;
 
 public class deathMessage {
-    Configuration config = LightSuicide.getInstance().getConfig();
-    public Component getMsg(Player player, String[] strings, Boolean random){
+    public static Component getMsg(Player player, String[] strings, Boolean random){
         int msgLength = strings.length;
         int randomNum = new Random().nextInt(msgLength);
 
@@ -21,9 +20,9 @@ public class deathMessage {
         }
     }
 
-    private String internalPlaceholderReplace(String input, Player player){
+    private static String internalPlaceholderReplace(String input, Player player){
         // format location text from config
-        String locText = config.getString("location-format");
+        String locText = configs.getConfig("config").getString("location-format");
         String locFormated = locText
                         .replace("%x%", String.valueOf(player.getLocation().getBlockX()))
                         .replace("%y%", String.valueOf(player.getLocation().getBlockY()))

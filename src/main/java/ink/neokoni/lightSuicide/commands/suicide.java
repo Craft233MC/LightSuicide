@@ -2,19 +2,17 @@ package ink.neokoni.lightSuicide.commands;
 
 import ink.neokoni.lightSuicide.LightSuicide;
 import ink.neokoni.lightSuicide.deathMessage;
+import ink.neokoni.lightSuicide.utils.configs;
+import ink.neokoni.lightSuicide.utils.text;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.Configuration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
 public class suicide implements CommandExecutor {
-    Configuration config = LightSuicide.getInstance().getConfig();
-    private final String[] broadcastDeathMsg = config.getStringList("broadcast-messages").toArray(new String[0]);
-    private final String[] sendPlayerDeathMsg = config.getStringList("send-player-messages").toArray(new String[0]);
     private static Player lastSuicidePlayer;
     private static JavaPlugin instance;
 
@@ -25,12 +23,15 @@ public class suicide implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if(!(commandSender instanceof Player)){
-            commandSender.sendMessage(LightSuicide.getMsgFromLang("not-player"));
+            commandSender.sendMessage(text.getLangLegacy("not-player"));
             return true;
         }
 
         Player player = (Player) commandSender;
-        deathMessage deathMessage = new deathMessage();
+        configs.getConfig("config").getStringList("broadcast-messages").toArray(new String[0]);
+
+        String[] broadcastDeathMsg = configs.getConfig("config").getStringList("broadcast-messages").toArray(new String[0]);
+        String[] sendPlayerDeathMsg = configs.getConfig("config").getStringList("send-player-messages").toArray(new String[0]);
 
         if (!commandSender.hasPermission("lightsuicide.suicide")){
             LightSuicide.noPermsMsg(player);
@@ -42,8 +43,8 @@ public class suicide implements CommandExecutor {
         player.setHealth(0.0);
 
         // broadcast msg
-        if (LightSuicide.getInstance().getConfig().getBoolean("use-custom-messages")){
-            if(instance.getConfig().getBoolean("random-suicide-broadcast-message")){
+        if (configs.getConfig("config").getBoolean("use-custom-messages")){
+            if(configs.getConfig("config").getBoolean("random-suicide-broadcast-message")){
                 Bukkit.broadcast(deathMessage.getMsg(player, broadcastDeathMsg, true));
             } else {
                 Bukkit.broadcast(deathMessage.getMsg(player, broadcastDeathMsg, false));
@@ -51,8 +52,8 @@ public class suicide implements CommandExecutor {
         }
 
         // send player msg
-        if (LightSuicide.getInstance().getConfig().getBoolean("send-msg-who-suicided")){
-            if(instance.getConfig().getBoolean("random-send-player-message")){
+        if (configs.getConfig("config").getBoolean("send-msg-who-suicided")){
+            if(configs.getConfig("config").getBoolean("random-send-player-message")){
                 player.sendMessage(deathMessage.getMsg(player, sendPlayerDeathMsg, false));
             } else {
                 player.sendMessage(deathMessage.getMsg(player, sendPlayerDeathMsg, false));

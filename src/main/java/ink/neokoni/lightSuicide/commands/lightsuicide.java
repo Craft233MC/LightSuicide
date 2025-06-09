@@ -1,6 +1,9 @@
 package ink.neokoni.lightSuicide.commands;
 
 import ink.neokoni.lightSuicide.LightSuicide;
+import ink.neokoni.lightSuicide.configUpdater;
+import ink.neokoni.lightSuicide.utils.configs;
+import ink.neokoni.lightSuicide.utils.text;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.format.TextColor;
@@ -76,28 +79,31 @@ public class lightsuicide implements CommandExecutor {
     }
 
     private void reload(CommandSender commandSender) throws IOException {
-        LightSuicide.getInstance().reload();
+        new configs().reloadConfig();
 
-        commandSender.sendMessage(LightSuicide.getMsgFromLang("reload-success"));
+        // check config and fix to default
+        new configUpdater().update(configs.getConfig("config"), configs.getConfig("lang"));
+
+        commandSender.sendMessage(text.getLangLegacy("reload-success"));
     }
 
     private void help(CommandSender c){
-        c.sendMessage(LightSuicide.getMsgFromLangV("running"));
-        c.sendMessage(LightSuicide.getMsgFromLang("suicide-cmd-help"));
+        c.sendMessage(text.getLangLegacy("running"));
+        c.sendMessage(text.getLangLegacy("suicide-cmd-help"));
         c.sendMessage(Component.text(""));
         c.sendMessage(Component.text("--------------------").color(TextColor.fromCSSHexString("#C8F1EF")));
-        c.sendMessage(LightSuicide.getMsgFromLang("about-cmd-help"));
-        c.sendMessage(LightSuicide.getMsgFromLang("reload-cmd-help"));
-        c.sendMessage(LightSuicide.getMsgFromLang("help-cmd-help"));
+        c.sendMessage(text.getLangLegacy("about-cmd-help"));
+        c.sendMessage(text.getLangLegacy("reload-cmd-help"));
+        c.sendMessage(text.getLangLegacy("help-cmd-help"));
     }
 
     private void about(CommandSender c){
-        c.sendMessage(LightSuicide.getMsgFromLangV("running"));
+        c.sendMessage(text.getLangLegacy("running"));
         c.sendMessage(Component.text(""));
-        c.sendMessage(LightSuicide.getMsgFromLang("description"));
+        c.sendMessage(text.getLangLegacy("description"));
         c.sendMessage(Component.text(""));
         c.sendMessage(
-                LightSuicide.getMsgFromLang("links")
+                text.getLangLegacy("links")
                         .append(Component.text("[GitHub]").clickEvent(ClickEvent.openUrl("https://github.com/Craft233MC/LightSuicide"))
                         .color(TextColor.fromCSSHexString("#C8F1EF")))
         );
