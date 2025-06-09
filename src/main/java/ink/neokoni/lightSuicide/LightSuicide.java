@@ -12,7 +12,7 @@ import java.io.IOException;
 public final class LightSuicide extends JavaPlugin {
 
     private static LightSuicide instance;
-    public static String version = "0.2";
+    public static String version = "0.3";
 
     @Override
     public void onEnable() {
