@@ -4,6 +4,7 @@ import ink.neokoni.lightSuicide.LightSuicide;
 import ink.neokoni.lightSuicide.deathMessage;
 import ink.neokoni.lightSuicide.utils.configs;
 import ink.neokoni.lightSuicide.utils.text;
+import ink.neokoni.lightutils.Commands.FreeCamCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -36,6 +37,13 @@ public class suicide implements CommandExecutor {
         if (!commandSender.hasPermission("lightsuicide.suicide")){
             LightSuicide.noPermsMsg(player);
             return true;
+        }
+
+        if (instance.getServer().getPluginManager().isPluginEnabled("LightUtils")) {
+            if (FreeCamCommand.getEnabledMap().containsKey(player)) {
+                player.sendMessage(text.getLangLegacy("gamemode-not-allowed"));
+                return true;
+            }
         }
 
         lastSuicidePlayer = player;

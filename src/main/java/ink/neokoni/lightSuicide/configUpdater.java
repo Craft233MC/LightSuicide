@@ -41,6 +41,7 @@ public class configUpdater {
         setLang("no-permission");
         setLang("not-player");
         setLang("reload-success");
+        setLang("gamemode-not-allowed");
         setLang("suicide-cmd-help");
         setLang("about-cmd-help");
         setLang("help-cmd-help");

@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'ink.neokoni.lightSuicide'
-version = '0.3'
+version = '0.3.1'
 
 repositories {
     mavenCentral()
@@ -19,7 +19,8 @@ repositories {
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.19-R0.1-SNAPSHOT")
-    implementation("net.kyori:adventure-api:4.19.0")
+    compileOnly("net.kyori:adventure-api:4.19.0")
+    compileOnly(files("libs/LightUtils-0.3.4.jar"))
 }
 
 def targetJavaVersion = 17

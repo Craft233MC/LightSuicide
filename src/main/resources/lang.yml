@@ -1,6 +1,7 @@
 no-permission: "&#C8F1EF你没有执行此命令的权限！"
 not-player: "&#C8F1EF只有玩家才能执行此命令！"
 reload-success: "&#C8F1EF成功重载配置文件！"
+gamemode-not-allowed: "&#C8F1EF当前游戏模式不允许使用！"
 
 suicide-cmd-help: "&#C8F1EF/suicide 执行自杀"
 about-cmd-help: "&#C8F1EF/lightsuicide about 显示关于信息"
